@@ -54,7 +54,8 @@ const EnergyResultPage = () => {
           You need approximately <strong>{Math.round(energy)} kcal</strong> per day.
         </p>
         <p className="text-sm text-gray-500">
-          This is roughly equivalent to a large fast food meal (e.g., a cheeseburger, fries, and a soft drink).
+          
+Daily energy should be balanced between proteins, lipids, and glucids. The best way to achieve this is by splitting it across three meals—breakfast, lunch, and dinner—spread evenly throughout the day.
         </p>
       </div>
 
