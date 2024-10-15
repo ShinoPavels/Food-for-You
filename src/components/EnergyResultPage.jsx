@@ -1,106 +1,108 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { FaUtensils } from 'react-icons/fa';
+import React, { useState } from 'react';
+import InputField from './InputField';
+import { useNavigate } from 'react-router-dom';
 
-const EnergyResultPage = () => {
-  const location = useLocation();
-  const { age, height, weight, sex } = location.state;
+const MainContent = () => {
+  const [formData, setFormData] = useState({
+    age: '',
+    height: '',
+    weight: '',
+    sex: ''
+  });
+
+  const [errors, setErrors] = useState({}); // To track errors for each field
   const navigate = useNavigate();
 
-  const handleGenerateMeals = () => {
-    navigate('/generate-meals', {
-      state: {
-        energy: Math.round(energy),
-        carbs: Math.round(carbs),
-        protein: Math.round(protein),
-        fats: Math.round(fats),
-      },
-    });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    
+    // Clear error for the field being changed
+    setErrors({ ...errors, [e.target.name]: '' });
   };
 
-  const heightInMeters = height / 100; // Convert height to meters
+  const validateForm = () => {
+    const newErrors = {};
+    let isValid = true;
 
-  // Energy calculation
-  let energy;
-  if (sex.toLowerCase() === 'male' || sex.toLowerCase() === 'man') {
-    energy = (1.083 * Math.pow(weight, 0.48) * Math.pow(heightInMeters, 0.50) * Math.pow(age, -0.13)) * (1000 / 4.1855);
-  } else if (sex.toLowerCase() === 'female' || sex.toLowerCase() === 'woman') {
-    energy = (0.963 * Math.pow(weight, 0.48) * Math.pow(heightInMeters, 0.50) * Math.pow(age, -0.13)) * (1000 / 4.1855);
-  }
+    // Check if fields are empty
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key]) {
+        newErrors[key] = 'This field is required'; // Set error message for empty field
+        isValid = false;
+      }
+    });
 
-  // Macronutrient calculation
-  const carbs = 0.45 * energy; // 45% to 50% carbs, we'll use 45%
-  const protein = 0.15 * energy; // 15% protein
-  const fats = 0.35 * energy; // 35% to 40% fats, we'll use 35%
+    setErrors(newErrors); // Update errors state
+    return isValid; // Return the validity of the form
+  };
 
-  // BMI Calculation
-  const bmi = weight / (heightInMeters * heightInMeters);
-  let bmiStatus = '';
-  if (bmi < 18.5) {
-    bmiStatus = 'Underweight';
-  } else if (bmi >= 18.5 && bmi < 24.9) {
-    bmiStatus = 'Normal weight';
-  } else if (bmi >= 25 && bmi < 29.9) {
-    bmiStatus = 'Overweight';
-  } else {
-    bmiStatus = 'Obesity';
-  }
+  const calculateNeeds = () => {
+    if (validateForm()) {
+      // Save the form data to local storage or pass it via navigation state
+      navigate('/result', { state: formData });
+    }
+  };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold mb-4">Your Daily Energy Needs</h2>
-        <p className="text-lg text-gray-700">
-          You need approximately <strong>{Math.round(energy)} kcal</strong> per day.
-        </p>
-        <p className="text-sm text-gray-500">
-          This is roughly equivalent to a large fast food meal (e.g., a cheeseburger, fries, and a soft drink).
-        </p>
-      </div>
+    <main className="flex-grow container mx-auto px-4 py-8">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Welcome to Food 4 You!</h2>
+      <p className="mb-6 text-gray-600">
+        Enter your details below and we will calculate the energy requirements based on your profile.
+      </p>
 
-      <div className="text-center mb-8">
-        <h3 className="text-xl font-bold mb-2">Macronutrient Breakdown</h3>
-        <p>Carbohydrates (45%): <strong>{Math.round(carbs)} kcal</strong></p>
-        <p>Proteins (15%): <strong>{Math.round(protein)} kcal</strong></p>
-        <p>Fats (35%): <strong>{Math.round(fats)} kcal</strong></p>
-      </div>
-
-      <div className="text-center mb-8">
-        <h3 className="text-xl font-bold mb-2">BMI Calculation</h3>
-        <p>Your BMI is: <strong>{bmi.toFixed(2)}</strong></p>
-        <p>Status: <strong>{bmiStatus}</strong></p>
-        <p className="text-sm text-gray-500">{getBMIInfo(bmiStatus)}</p>
-      </div>
-
-      <div className="text-center">
+      <form className="w-full max-w-md mx-auto">
+        <InputField 
+          label="Age" 
+          type="number" 
+          name="age" 
+          value={formData.age} 
+          onChange={handleChange} 
+          error={errors.age}
+          className={errors.age ? 'border-red-500' : ''}
+        />
+        <InputField 
+          label="Height (cm)" 
+          type="number" 
+          name="height" 
+          value={formData.height} 
+          onChange={handleChange} 
+          error={errors.height}
+          className={errors.height ? 'border-red-500' : ''}
+        />
+        <InputField 
+          label="Weight (kg)" 
+          type="number" 
+          name="weight" 
+          value={formData.weight} 
+          onChange={handleChange} 
+          error={errors.weight}
+          className={errors.weight ? 'border-red-500' : ''}
+        />
+        
+        <label htmlFor="sex" className="block text-gray-700 font-bold mb-2">Sex</label>
+        <select
+          name="sex"
+          id="sex"
+          value={formData.sex}
+          onChange={handleChange}
+          className={`block w-full bg-gray-200 border ${errors.sex ? 'border-red-500' : 'border-gray-300'} rounded py-2 px-3 text-gray-700 focus:outline-none focus:bg-white focus:border-gray-500`}
+        >
+          <option value="">Sex</option> {/* Default option */}
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        {errors.sex && <p className="text-red-500 text-xs italic">{errors.sex}</p>}
         
         <button
-          onClick={handleGenerateMeals}
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-flex items-center"
-          >
-          <FaUtensils className="mr-2" />
-          Generate Meals for the Day
+          type="button"
+          onClick={calculateNeeds}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
+        >
+          Calculate My Needs
         </button>
-        
-      </div>
-    </div>
+      </form>
+    </main>
   );
 };
 
-// Function to provide a description based on BMI status
-const getBMIInfo = (status) => {
-  switch (status) {
-    case 'Underweight':
-      return 'You may need to gain some weight. Consult a healthcare provider.';
-    case 'Normal weight':
-      return 'You are in the healthy weight range. Keep maintaining your current habits!';
-    case 'Overweight':
-      return 'You may need to lose some weight. Consider healthier eating habits and more physical activity.';
-    case 'Obesity':
-      return 'You are in the obesity range. It is important to take action to improve your health.';
-    default:
-      return '';
-  }
-};
-
-export default EnergyResultPage;
+export default MainContent;

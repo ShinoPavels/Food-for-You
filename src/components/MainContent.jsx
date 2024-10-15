@@ -10,15 +10,37 @@ const MainContent = () => {
     sex: ''
   });
 
+  const [errors, setErrors] = useState({}); // To track errors for each field
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    
+    // Clear error for the field being changed
+    setErrors({ ...errors, [e.target.name]: '' });
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    let isValid = true;
+
+    // Check if fields are empty
+    Object.keys(formData).forEach((key) => {
+      if (!formData[key]) {
+        newErrors[key] = 'This field is required'; // Set error message for empty field
+        isValid = false;
+      }
+    });
+
+    setErrors(newErrors); // Update errors state
+    return isValid; // Return the validity of the form
   };
 
   const calculateNeeds = () => {
-    // Save the form data to local storage or pass it via navigation state
-    navigate('/result', { state: formData });
+    if (validateForm()) {
+      // Save the form data to local storage or pass it via navigation state
+      navigate('/result', { state: formData });
+    }
   };
 
   return (
@@ -29,10 +51,44 @@ const MainContent = () => {
       </p>
 
       <form className="w-full max-w-md mx-auto">
-        <InputField label="Age" type="number" name="age" value={formData.age} onChange={handleChange} />
-        <InputField label="Height (cm)" type="number" name="height" value={formData.height} onChange={handleChange} />
-        <InputField label="Weight (kg)" type="number" name="weight" value={formData.weight} onChange={handleChange} />
-        <InputField label="Sex" type="text" name="sex" value={formData.sex} onChange={handleChange} />
+        <InputField 
+          label="Age" 
+          type="number" 
+          name="age" 
+          value={formData.age} 
+          onChange={handleChange} 
+          error={errors.age}
+        />
+        <InputField 
+          label="Height (cm)" 
+          type="number" 
+          name="height" 
+          value={formData.height} 
+          onChange={handleChange} 
+          error={errors.height}
+        />
+        <InputField 
+          label="Weight (kg)" 
+          type="number" 
+          name="weight" 
+          value={formData.weight} 
+          onChange={handleChange} 
+          error={errors.weight}
+        />
+        
+        <label htmlFor="sex" className="block text-gray-700 font-bold mb-2">Sex</label>
+        <select
+          name="sex"
+          id="sex"
+          value={formData.sex}
+          onChange={handleChange}
+          className={`block w-full bg-gray-200 border ${errors.sex ? 'border-red-500' : 'border-gray-300'} rounded py-2 px-3 text-gray-700 focus:outline-none focus:bg-white focus:border-gray-500`}
+        >
+          <option value="">Sex</option> {/* Default option */}
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        {errors.sex && <p className="text-red-500 text-xs italic">{errors.sex}</p>}
         
         <button
           type="button"
