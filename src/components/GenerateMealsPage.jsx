@@ -74,6 +74,8 @@ const GenerateMealsPage = () => {
   // Re-generate meal plan
   const handleRegenerateMeals = () => {
     generateMealPlan();
+    // Scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const generateFlavorText = (meals) => {
@@ -93,7 +95,7 @@ const GenerateMealsPage = () => {
 
     return `Your meal plan is rich in vitamins such as ${[...vitamins].join(', ')}, and minerals including ${[...minerals].join(', ')}. 
     The meals provide a balanced intake of carbohydrates, proteins, and fats, primarily composed of ${[...glucidTypes].join(', ')}, 
-    ${[...lipidTypes].join(', ')}, and ${[...proteinTypes].join(', ')}. Enjoy a nutritious day!`;
+    ${[...lipidTypes].join(', ')} and ${[...proteinTypes].join(', ')}. Enjoy a nutritious day!`;
   };
 
   // Utility function to format dish names
