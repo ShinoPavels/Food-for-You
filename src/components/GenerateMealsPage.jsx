@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import mealDatabase from './MealDatabase'; // Import the meal database
-import { FaAppleAlt, FaCoffee, FaLeaf, FaUtensils } from 'react-icons/fa'; // Importing icons for better visuals
+import { FaCoffee, FaLeaf, FaUtensils } from 'react-icons/fa'; // Importing icons for better visuals
 
 const GenerateMealsPage = () => {
   const location = useLocation();
