@@ -2,3 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #4A5568; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Roundness of the scrollbar thumb */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #E2E8F0; /* Color of the scrollbar track */
+    border-radius: 4px; /* Roundness of the scrollbar track */
+  }
+  
+  /* For Firefox */
+  .scrollbar {
+    scrollbar-width: thin; /* Options: auto, thin */
+    scrollbar-color: #4A5568 #E2E8F0; /* thumb color and track color */
+  }
+  

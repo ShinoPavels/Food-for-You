@@ -36,7 +36,8 @@ const GenerateMealsPage = () => {
     let totalEnergy = 0;
 
     const pickRandomDish = (category) => {
-      return mealDatabase[category][Math.floor(Math.random() * mealDatabase[category].length)]();
+      const dishes = mealDatabase[category];
+      return dishes[Math.floor(Math.random() * dishes.length)]();
     };
 
     if (mealType === 'breakfast') {
@@ -86,8 +87,8 @@ const GenerateMealsPage = () => {
     const glucidTypes = new Set();
 
     meals.forEach(meal => {
-      meal.vitamins.forEach(vitamin => vitamins.add(vitamin)); // Use add instead of push
-      meal.minerals.forEach(mineral => minerals.add(mineral)); // Use add instead of push
+      meal.vitamins.forEach(vitamin => vitamins.add(vitamin));
+      meal.minerals.forEach(mineral => minerals.add(mineral));
       proteinTypes.add(meal.proteinType);
       lipidTypes.add(meal.lipidType);
       glucidTypes.add(meal.glucidType);
@@ -115,7 +116,7 @@ const GenerateMealsPage = () => {
     <div className="container mx-auto px-4 py-8 bg-gradient-to-r from-green-100 to-blue-200 rounded-lg shadow-lg relative overflow-hidden">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         {/* Background image can be added here if desired */}
-        <img src="https://source.unsplash.com/1600x900/?food" alt="" className="w-full h-full object-cover" /> {/* Alt attribute fixed */}
+        <img src="https://source.unsplash.com/1600x900/?food" alt="" className="w-full h-full object-cover" />
       </div>
       <h1 className="text-4xl font-bold text-center mb-6 text-green-800 shadow-md p-2 rounded bg-white bg-opacity-90 border border-gray-300 relative z-10">
         Menu for You
