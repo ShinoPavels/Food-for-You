@@ -23,7 +23,7 @@ const Header = ({ language, toggleLanguage }) => {
   return (
     <header className="relative bg-green-600 text-white py-4 px-6 shadow-md">
       {/* Centered Title - Always in English */}
-      <h1 className="text-3xl font-extrabold tracking-wide text-center uppercase">
+      <h1 className="text-xl md:text-3xl font-extrabold tracking-wide text-center uppercase">
         <Link to="/" className="hover:underline hover:text-gray-200 transition-colors duration-300">
           Food 4 You
         </Link>
@@ -32,7 +32,7 @@ const Header = ({ language, toggleLanguage }) => {
       {/* Language Switch Button */}
       <button
         onClick={toggleLanguage}
-        className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white text-green-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
+        className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white text-green-600 text-sm md:text-base px-3 py-1 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
       >
         {language}
       </button>
@@ -41,7 +41,7 @@ const Header = ({ language, toggleLanguage }) => {
       {location.pathname !== '/' && (
         <button
           onClick={handleBackButtonClick}
-          className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white text-green-600 px-2 py-1 rounded-lg flex items-center hover:bg-gray-100 transition-colors duration-300"
+          className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white text-green-600 text-sm md:text-base px-2 py-1 rounded-lg flex items-center hover:bg-gray-100 transition-colors duration-300"
         >
           <AiOutlineArrowLeft className="mr-1" /> {/* Icon with margin to the right */}
           {textContent[language].backButton}
@@ -52,4 +52,3 @@ const Header = ({ language, toggleLanguage }) => {
 };
 
 export default Header;
-
