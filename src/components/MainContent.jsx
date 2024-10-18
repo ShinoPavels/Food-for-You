@@ -2,7 +2,32 @@ import React, { useState } from 'react';
 import InputField from './InputField';
 import { useNavigate } from 'react-router-dom';
 
-const MainContent = () => {
+const translations = {
+  ENG: {
+    welcome: 'Welcome to Food 4 You!',
+    instructions: 'Enter your details below and we will calculate your personalized dietary needs.',
+    age: 'Age',
+    height: 'Height (cm)',
+    weight: 'Weight (kg)',
+    sex: 'Sex',
+    selectSex: 'Select your sex',
+    calculate: 'Calculate My Needs',
+    required: 'This field is required'
+  },
+  FR: {
+    welcome: 'Bienvenue sur Food 4 You!',
+    instructions: 'Entrez vos données ci-dessous et nous calculerons vos besoins diététiques personnalisés.',
+    age: 'Âge',
+    height: 'Taille (cm)',
+    weight: 'Poids (kg)',
+    sex: 'Sexe',
+    selectSex: 'Sélectionnez votre sexe',
+    calculate: 'Calculer mes besoins',
+    required: 'Ce champ est requis'
+  }
+};
+
+const MainContent = ({ language }) => {
   const [formData, setFormData] = useState({
     age: '',
     height: '',
@@ -24,7 +49,7 @@ const MainContent = () => {
 
     Object.keys(formData).forEach((key) => {
       if (!formData[key]) {
-        newErrors[key] = 'This field is required';
+        newErrors[key] = translations[language].required;
         isValid = false;
       }
     });
@@ -42,15 +67,15 @@ const MainContent = () => {
   return (
     <main className="flex-grow container mx-auto px-4 py-8">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-green-700 mb-4">Welcome to Food 4 You!</h2>
+        <h2 className="text-3xl font-bold text-green-700 mb-4">{translations[language].welcome}</h2>
         <p className="text-lg text-gray-600">
-          Enter your details below and we will calculate your personalized dietary needs.
+          {translations[language].instructions}
         </p>
       </div>
 
       <form className="w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
         <InputField 
-          label="Age" 
+          label={translations[language].age} 
           type="number" 
           name="age" 
           value={formData.age} 
@@ -58,7 +83,7 @@ const MainContent = () => {
           error={errors.age}
         />
         <InputField 
-          label="Height (cm)" 
+          label={translations[language].height} 
           type="number" 
           name="height" 
           value={formData.height} 
@@ -66,7 +91,7 @@ const MainContent = () => {
           error={errors.height}
         />
         <InputField 
-          label="Weight (kg)" 
+          label={translations[language].weight} 
           type="number" 
           name="weight" 
           value={formData.weight} 
@@ -75,7 +100,7 @@ const MainContent = () => {
         />
 
         <div className="mb-4">
-          <label htmlFor="sex" className="block text-gray-700 font-bold mb-2">Sex</label>
+          <label htmlFor="sex" className="block text-gray-700 font-bold mb-2">{translations[language].sex}</label>
           <select
             name="sex"
             id="sex"
@@ -83,7 +108,7 @@ const MainContent = () => {
             onChange={handleChange}
             className={`block w-full bg-gray-100 border ${errors.sex ? 'border-red-500' : 'border-gray-300'} rounded-lg py-2 px-3 text-gray-700 focus:outline-none focus:bg-white focus:border-green-500`}
           >
-            <option value="">Select your sex</option>
+            <option value="">{translations[language].selectSex}</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
@@ -96,7 +121,7 @@ const MainContent = () => {
             onClick={calculateNeeds}
             className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline mt-6 transition duration-200"
           >
-            Calculate My Needs
+            {translations[language].calculate}
           </button>
         </div>
       </form>
