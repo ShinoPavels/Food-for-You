@@ -10,13 +10,11 @@ const MainContent = () => {
     sex: ''
   });
 
-  const [errors, setErrors] = useState({}); // To track errors for each field
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    
-    // Clear error for the field being changed
     setErrors({ ...errors, [e.target.name]: '' });
   };
 
@@ -24,33 +22,33 @@ const MainContent = () => {
     const newErrors = {};
     let isValid = true;
 
-    // Check if fields are empty
     Object.keys(formData).forEach((key) => {
       if (!formData[key]) {
-        newErrors[key] = 'This field is required'; // Set error message for empty field
+        newErrors[key] = 'This field is required';
         isValid = false;
       }
     });
 
-    setErrors(newErrors); // Update errors state
-    return isValid; // Return the validity of the form
+    setErrors(newErrors);
+    return isValid;
   };
 
   const calculateNeeds = () => {
     if (validateForm()) {
-      // Save the form data to local storage or pass it via navigation state
       navigate('/result', { state: formData });
     }
   };
 
   return (
     <main className="flex-grow container mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Welcome to Food 4 You!</h2>
-      <p className="mb-6 text-gray-600">
-        Enter your details below and we will calculate the energy requirements based on your profile.
-      </p>
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-green-700 mb-4">Welcome to Food 4 You!</h2>
+        <p className="text-lg text-gray-600">
+          Enter your details below and we will calculate your personalized dietary needs.
+        </p>
+      </div>
 
-      <form className="w-full max-w-md mx-auto">
+      <form className="w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
         <InputField 
           label="Age" 
           type="number" 
@@ -75,28 +73,32 @@ const MainContent = () => {
           onChange={handleChange} 
           error={errors.weight}
         />
-        
-        <label htmlFor="sex" className="block text-gray-700 font-bold mb-2">Sex</label>
-        <select
-          name="sex"
-          id="sex"
-          value={formData.sex}
-          onChange={handleChange}
-          className={`block w-full bg-gray-200 border ${errors.sex ? 'border-red-500' : 'border-gray-300'} rounded py-2 px-3 text-gray-700 focus:outline-none focus:bg-white focus:border-gray-500`}
-        >
-          <option value="">Sex</option> {/* Default option */}
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-        {errors.sex && <p className="text-red-500 text-xs italic">{errors.sex}</p>}
-        
-        <button
-          type="button"
-          onClick={calculateNeeds}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
-        >
-          Calculate My Needs
-        </button>
+
+        <div className="mb-4">
+          <label htmlFor="sex" className="block text-gray-700 font-bold mb-2">Sex</label>
+          <select
+            name="sex"
+            id="sex"
+            value={formData.sex}
+            onChange={handleChange}
+            className={`block w-full bg-gray-100 border ${errors.sex ? 'border-red-500' : 'border-gray-300'} rounded-lg py-2 px-3 text-gray-700 focus:outline-none focus:bg-white focus:border-green-500`}
+          >
+            <option value="">Select your sex</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          {errors.sex && <p className="text-red-500 text-xs italic">{errors.sex}</p>}
+        </div>
+
+        <div className="text-center">
+          <button
+            type="button"
+            onClick={calculateNeeds}
+            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline mt-6 transition duration-200"
+          >
+            Calculate My Needs
+          </button>
+        </div>
       </form>
     </main>
   );
