@@ -434,9 +434,9 @@ const EnergyResultPage = () => {
         <div className="bg-green-50 border border-green-300 p-6 rounded-lg shadow-md">
           <h3 className="text-2xl font-bold text-green-700 text-center">Macronutrient Breakdown</h3>
           <div className="mt-4 text-gray-700 text-center space-y-2">
-            <p>Carbohydrates (45%): <strong className="text-green-900">{Math.round(carbs)} kcal</strong></p>
+            <p>Glucids (45%): <strong className="text-green-900">{Math.round(carbs)} kcal</strong></p>
             <p>Proteins (15%): <strong className="text-green-900">{Math.round(protein)} kcal</strong></p>
-            <p>Fats (35%): <strong className="text-green-900">{Math.round(fats)} kcal</strong></p>
+            <p>Lipids (35%): <strong className="text-green-900">{Math.round(fats)} kcal</strong></p>
           </div>
         </div>
 
