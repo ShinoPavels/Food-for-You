@@ -3,13 +3,6 @@ import { useLocation } from 'react-router-dom';
 import mealDatabase from './MealDatabase'; // Import the meal database
 import { FaCoffee, FaLeaf, FaUtensils } from 'react-icons/fa'; // Importing icons for better visuals
 
-const GenerateMealsPage = () => {
-  const location = useLocation();
-  const { energy, protein, fats, carbs } = location.state; // Data passed from EnergyResultPage
-
-  const [mealPlan, setMealPlan] = useState(null);
-  const [flavorText, setFlavorText] = useState('');
-
   const translations = {
     ENG: {
       menuTitle: 'Menu for You',
@@ -1686,8 +1679,14 @@ const GenerateMealsPage = () => {
       Zucchini: 'Courgette'
     }
   };
-  
 
+const GenerateMealsPage = ({ language }) => {
+  const location = useLocation();
+  const { energy, protein, fats, carbs } = location.state; // Data passed from EnergyResultPage
+
+  const [mealPlan, setMealPlan] = useState(null);
+  const [flavorText, setFlavorText] = useState('');
+  
   useEffect(() => {
     generateMealPlan();
   }, [energy, protein, fats, carbs]);
