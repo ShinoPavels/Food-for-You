@@ -5,14 +5,17 @@ import { FaCoffee, FaLeaf, FaUtensils } from 'react-icons/fa'; // Importing icon
 
   const translations = {
     ENG: {
-      menuTitle: 'Menu for You',
-      generatingMealPlan: 'Generating your meal plan...',
-      reGenerateMeals: 'Re-Generate Meals',
-      breakfast: 'Breakfast',
-      lunch: 'Lunch',
-      dinner: 'Dinner',
-      flavorText: 'Enjoy your meals!',
-      mealDetails: 'Ingredients: {ingredients}, Quantity: {quantity}g, Energy: {totalEnergy} kcal',
+      menuForYou: "Menu for You",
+      breakfast: "Breakfast",
+      lunch: "Lunch",
+      dinner: "Dinner",
+      regenerateMeals: "Regenerate Meals",
+      generatingMealPlan: "Generating Meal Plan...",
+      fruit: "Fruit",
+      vitamins: "Your meal plan is rich in vitamins such as",
+      minerals: "and minerals including",
+      balancedIntake: "The meals provide a balanced intake of carbohydrates, proteins, and fats, primarily composed of",
+      enjoy: "Enjoy a nutritious day!",
       acaiBowl: 'Acai Bowl',
       almondButterToast: 'Almond Butter Toast',
       appleCinnamonOatmeal: 'Apple Cinnamon Oatmeal',
@@ -839,17 +842,138 @@ import { FaCoffee, FaLeaf, FaUtensils } from 'react-icons/fa'; // Importing icon
       WhiteFish: 'White Fish',
       WhiteWine: 'White Wine',
       Yogurt: 'Yogurt',
-      Zucchini: 'Zucchini'
+      Zucchini: 'Zucchini',
+      Alcohols: 'Alcohols',
+      beer: 'beer',
+      wine: 'wine',
+      spirits: 'spirits',
+      Almonds: 'Almonds',
+      AlmondButter: 'Almond butter',
+      AlmondMilks: 'Almond Milks',
+      Apples: 'Apples',
+      apples: 'apples',
+      avocado: 'avocado',
+      AvocadoOils: 'Avocado Oils',
+      bacon: 'bacon',
+      bakingPowder: 'baking powder',
+      BakingPowder2: 'Baking powder',
+      LiveCultures: 'Live cultures',
+      ActiveCultures: 'Active cultures',
+      KefirCultures: 'Kefir cultures',
+      MoldCultures: 'Mold cultures',
+      PenicilliumMold: 'Penicillium mold',
+      Bananas: 'Bananas',
+      barbecueSauce: 'barbecue sauce',
+      BBQSauce: 'BBQ Sauce',
+      Barleys: 'Barleys',
+      TempuraBatter: 'Tempura Batter',
+      BayLeaves: 'Bay Leaves',
+      blackBeans: 'black beans',
+      kidneyBeans: 'kidney beans',
+      pintoBeans: 'pinto beans',
+      GroundBeef: 'Ground Beef',
+      beefs: 'beefs',
+      groundBeef: 'ground beef',
+      BellPeppers2: 'Bell Peppers',
+      BellPeppers3: 'Bell peppers',
+      BlackPepper2: 'Black Pepper',
+      WholeGrainBread: 'Whole grain bread',
+      butter: 'butter',
+      buttermilk: 'buttermilk',
+      Carrots: 'Carrots',
+      Cereals: 'Cereals',
+      CheddarCheese2: 'Cheddar Cheese',
+      Cheddar: 'Cheddar Cheese',
+      ParmesanCheese: 'Parmesan Cheese',
+      MozzarellaCheese: 'Mozzarella Cheese',
+      FetaCheese: 'Feta Cheese',
+      CottageCheese: 'Cottage cheese',
+      DriedCherries: 'Dried cherries',
+      Cherry: 'Cherry',
+      cherries2: 'cherries',
+      ChickenBreast: 'Chicken Breast',
+      ChickenWings: 'Chicken Wings',
+      ChiliFlakes: 'Chili flakes',
+      ChiliFlakes2: 'Chili Flakes',
+      ChiliPowders: 'Chili Powders',
+      ChocolateSyrup: 'chocolate syrup',
+      DarkChocolate2: 'Dark chocolate',
+      ChiaSeeds: 'Chia Seeds',
+      CocoaPowder: 'Cocoa Powder',
+      RedCocoaPowder: 'red cocoa powder',
+      CocoaPowder2: 'Cocoa powder',
+      CoconutOils: 'Coconut Oils',
+      coffee: 'Coffee',
+      CoffeeBeans: 'Coffee Beans',
+      Cornmeal: 'Cornmeal',
+      Couscouses: 'Couscouses',
+      creamCheeseFrosting: 'cream cheese frosting',
+      Cucumbers: 'Cucumbers',
+      CurryPowder: 'Curry Powder',
+      DarkChocolate3: 'Dark Chocolate',
+      DarkChocolates: 'Dark Chocolates',
+      ChocolateChips: 'Chocolate chips',
+      Dressings2: 'Dressings',
+      SaladDressing: 'salad dressing',
+      Eggs: 'Eggs',
+      EggWhites: 'egg whites',
+      EggYolks: 'Egg Yolks',
+      EggWhites2: 'Egg whites',
+      Fishes: 'Fishes',
+      fish: 'fish',
+      fishes: 'fishes',
+      Salmon: 'salmon',
+      FreshTuna: 'Fresh Tuna',
+      RawFish: 'Raw Fish',
+      flour: 'flour',
+      WholeWheatFlour: 'Whole wheat flour',
+      AlmondFlour: 'almond flour',
+      Fruits2: 'Fruits',
+      grapes: 'grapes',
+      strawberries: 'strawberries',
+      blueberries: 'blueberries',
+      FrozenBerries: 'Frozen berries',
+      GoatsMilk2: 'Goat\'s Milk',
+      GreekYogurt2: 'Greek Yogurt',
+      Hazelnuts: 'Hazelnuts',
+      HotDog: 'Hot Dog',
+      IceCubes: 'Ice Cubes',
+      Jam: 'Jam',
+      Jellies: 'Jellies',
+      Juice: 'Juice',
+      Ketchup: 'Ketchup',
+      Lemons: 'Lemons',
+      Lime: 'Lime',
+      Nectarine: 'Nectarine',
+      Onion: 'Onion',
+      Orange: 'Orange',
+      Peas: 'Peas',
+      Potato: 'Potato',
+      Potatoes: 'Potatoes',
+      Radish: 'Radish',
+      Risotto: 'Risotto',
+      RoastedGarlic: 'Roasted garlic',
+      Sauerkraut: 'Sauerkraut',
+      Sauces: 'Sauces',
+      Slices: 'Slices',
+      Soy: 'Soy',
+      Spices: 'Spices',
+      Tomatoes: 'Tomatoes',
+      VegetableOil: 'Vegetable Oil',
+      
     },
     FR: {
-      menuTitle: 'Menu pour vous',
-      generatingMealPlan: 'Génération de votre plan de repas...',
-      reGenerateMeals: 'Re-générer les repas',
-      breakfast: 'Petit-déjeuner',
-      lunch: 'Déjeuner',
-      dinner: 'Dîner',
-      flavorText: 'Profitez de vos repas!',
-      mealDetails: 'Ingrédients: {ingredients}, Quantité: {quantity}g, Énergie: {totalEnergy} kcal',
+      menuForYou: "Menu pour Vous",
+      breakfast: "Petit Déjeuner",
+      lunch: "Déjeuner",
+      dinner: "Dîner",
+      regenerateMeals: "Régénérer les Repas",
+      generatingMealPlan: "Génération du Plan de Repas...",
+      fruit: "Fruit",
+      vitamins: "Votre plan de repas est riche en vitamines telles que",
+      minerals: "et minéraux incluant",
+      balancedIntake: "Les repas offrent un apport équilibré en glucides, protéines et graisses, principalement composés de",
+      enjoy: "Profitez d'une journée nutritive!",
       acaiBowl: 'Bol d\'Açaï',
       almondButterToast: 'Toast au beurre d\'amandes',
       appleCinnamonOatmeal: 'Flocons d\'avoine pomme cannelle',
@@ -1676,7 +1800,125 @@ import { FaCoffee, FaLeaf, FaUtensils } from 'react-icons/fa'; // Importing icon
       WhiteFish: 'Poisson blanc',
       WhiteWine: 'Vin blanc',
       Yogurt: 'Yaourt',
-      Zucchini: 'Courgette'
+      Zucchini: 'Courgette',
+      Alcohols: 'Alcools',
+      beer: 'bière',
+      wine: 'vin',
+      spirits: 'spiritueux',
+      Almonds: 'Amandes',
+      AlmondButter: 'Beurre d\'amande',
+      AlmondMilks: 'Laits d\'amande',
+      Apples: 'Pommes',
+      apples: 'pommes',
+      avocado: 'avocat',
+      sugar: 'sucre',
+      milk: 'lait',
+      AvocadoOils: 'Huiles d\'avocat',
+      bacon: 'bacon',
+      bakingPowder: 'poudre à lever',
+      BakingPowder2: 'Poudre à lever',
+      LiveCultures: 'Cultures vivantes',
+      ActiveCultures: 'Cultures actives',
+      KefirCultures: 'Cultures de kéfir',
+      MoldCultures: 'Cultures de moisissure',
+      PenicilliumMold: 'Moisissure Penicillium',
+      Bananas: 'Bananes',
+      barbecueSauce: 'sauce barbecue',
+      BBQSauce: 'Sauce BBQ',
+      Barleys: 'Orgé',
+      TempuraBatter: 'Pâte tempura',
+      BayLeaves: 'Feuilles de laurier',
+      blackBeans: 'haricots noirs',
+      kidneyBeans: 'haricots rouges',
+      pintoBeans: 'haricots pinto',
+      GroundBeef: 'Viande hachée',
+      beefs: 'beefs',
+      groundBeef: 'viande hachée',
+      BellPeppers2: 'Poivrons',
+      BellPeppers3: 'poivrons',
+      WholeGrainBread: 'Pain complet',
+      butter: 'beurre',
+      buttermilk: 'lait caillé',
+      Carrots: 'Carottes',
+      Cereals: 'Céréales',
+      CheddarCheese2: 'Fromage Cheddar',
+      Cheddar: 'Fromage cheddar',
+      ParmesanCheese: 'Fromage parmesan',
+      MozzarellaCheese: 'Fromage mozzarella',
+      FetaCheese: 'Fromage feta',
+      CottageCheese: 'Fromage cottage',
+      DriedCherries: 'Cerises séchées',
+      Cherry: 'Cerise',
+      cherries2: 'cerises',
+      ChickenBreast: 'Poitrine de poulet',
+      ChickenWings: 'Ailes de poulet',
+      ChiliFlakes: 'Flocons de piment',
+      ChiliFlakes2: 'Flocons de piment',
+      ChiliPowders: 'Poudres de piment',
+      ChocolateSyrup: 'sirop de chocolat',
+      DarkChocolate2: 'Chocolat noir',
+      ChiaSeeds: 'Graines de chia',
+      CocoaPowder: 'Poudre de cacao',
+      RedCocoaPowder: 'poudre de cacao rouge',
+      CocoaPowder2: 'Poudre de cacao',
+      CoconutOils: 'Huiles de coco',
+      coffee: 'Café',
+      CoffeeBeans: 'Grains de café',
+      Cornmeal: 'Farine de maïs',
+      Couscouses: 'Couscouses',
+      creamCheeseFrosting: 'glaçage au fromage à la crème',
+      Cucumbers: 'Concombres',
+      CurryPowder: 'Poudre de curry',
+      DarkChocolate3: 'Chocolat noir',
+      DarkChocolates: 'Chocolats noirs',
+      ChocolateChips: 'Pépites de chocolat',
+      Dressings2: 'Vinaigrettes',
+      SaladDressing: 'vinaigrette',
+      Eggs: 'Oeufs',
+      EggWhites: 'blancs d\'oeufs',
+      EggYolks: 'Jaunes d\'oeufs',
+      EggWhites2: 'Blancs d\'oeufs',
+      Fishes: 'Poissons',
+      fish: 'poisson',
+      fishes: 'poissons',
+      Salmon: 'Saumon',
+      FreshTuna: 'Thon frais',
+      RawFish: 'Poisson cru',
+      flour: 'farine',
+      WholeWheatFlour: 'Farine de blé entier',
+      AlmondFlour: 'Farine d\'amande',
+      Fruits2: 'Fruits',
+      grapes: 'raisin',
+      strawberries: 'fraises',
+      blueberries: 'myrtilles',
+      FrozenBerries: 'Baies congelées',
+      GoatsMilk2: 'Lait de chèvre',
+      GreekYogurt2: 'Yaourt grec',
+      Hazelnuts: 'Noisettes',
+      HotDog: 'Hot-dog',
+      IceCubes: 'Cubes de glace',
+      Jam: 'Confiture',
+      Jellies: 'Gelées',
+      Juice: 'Jus',
+      Ketchup: 'Ketchup',
+      Lemons: 'Citrons',
+      Lime: 'Citron vert',
+      Nectarine: 'Nectarine',
+      Onion: 'Oignon',
+      Orange: 'Orange',
+      Peas: 'Petits pois',
+      Potato: 'Pomme de terre',
+      Potatoes: 'Pommes de terre',
+      Radish: 'Radis',
+      Risotto: 'Risotto',
+      RoastedGarlic: 'Ail rôti',
+      Sauerkraut: 'Choucroute',
+      Sauces: 'Sauces',
+      Slices: 'Tranches',
+      Soy: 'Soja',
+      Spices: 'Épices',
+      Tomatoes: 'Tomates',
+      VegetableOil: 'Huile végétale',
     }
   };
 
@@ -1771,22 +2013,24 @@ const GenerateMealsPage = ({ language }) => {
       glucidTypes.add(meal.glucidType);
     });
 
-    return `Your meal plan is rich in vitamins such as ${[...vitamins].join(', ')}, and minerals including ${[...minerals].join(', ')}. 
-    The meals provide a balanced intake of carbohydrates, proteins, and fats, primarily composed of ${[...glucidTypes].join(', ')}, 
-    ${[...lipidTypes].join(', ')} and ${[...proteinTypes].join(', ')}. Enjoy a nutritious day!`;
+    return `Vitamins: ${[...vitamins]}, Minerals: ${[...minerals]}, Carbs: ${[...glucidTypes]}, Fats: ${[...lipidTypes]}, Proteins: ${[...proteinTypes]}. Enjoy!`;
+
   };
 
   // Utility function to format dish names
   const formatDishName = (name) => {
-    if (!name) return "Fruit"; // Handle undefined names
+    if (!name) return 'Fruit'; // Handle undefined names
 
-    // Special case for "Fruit"
-    if (name === "Fruit") return "Fruit";
+    const translatedName = translations[language][name] || name;
 
-    return name
+    return translatedName
       .replace(/([A-Z])/g, ' $1') // Add space before each capital letter
       .replace(/^./, (str) => str.toUpperCase()) // Capitalize the first letter
       .trim(); // Trim any leading or trailing spaces
+  };
+
+  const formatIngredients = (ingredients) => {
+    return ingredients.map(ingredient => translations[language][ingredient] || ingredient).join(', ');
   };
 
   return (
@@ -1796,14 +2040,14 @@ const GenerateMealsPage = ({ language }) => {
         <img src="https://source.unsplash.com/1600x900/?food" alt="" className="w-full h-full object-cover" />
       </div>
       <h1 className="text-4xl font-bold text-center mb-6 text-green-800 shadow-md p-2 rounded bg-white bg-opacity-90 border border-gray-300 relative z-10">
-        Menu for You
+      {translations[language].menuForYou}
       </h1>
 
       {mealPlan ? (
         <>
-          <MealSection title="Breakfast" meals={mealPlan.breakfast} formatDishName={formatDishName} icon={<FaCoffee className="text-green-600" />} />
-          <MealSection title="Lunch" meals={mealPlan.lunch} formatDishName={formatDishName} icon={<FaUtensils className="text-green-600" />} />
-          <MealSection title="Dinner" meals={mealPlan.dinner} formatDishName={formatDishName} icon={<FaLeaf className="text-green-600" />} />
+          <MealSection title={translations[language].breakfast} meals={mealPlan.breakfast} formatDishName={formatDishName} formatIngredients={formatIngredients} icon={<FaCoffee className="text-green-600" />} />
+          <MealSection title={translations[language].lunch} meals={mealPlan.lunch} formatDishName={formatDishName} formatIngredients={formatIngredients} icon={<FaUtensils className="text-green-600" />} />
+          <MealSection title={translations[language].dinner} meals={mealPlan.dinner} formatDishName={formatDishName} formatIngredients={formatIngredients} icon={<FaLeaf className="text-green-600" />} />
 
           <p className="mt-6 text-center text-gray-800 italic text-lg bg-gray-100 p-4 rounded-lg shadow-sm">{flavorText}</p>
 
@@ -1812,19 +2056,19 @@ const GenerateMealsPage = ({ language }) => {
               onClick={handleRegenerateMeals}
               className="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded transition duration-300 shadow-lg transform hover:scale-105"
             >
-              Re-Generate Meals
+              {translations[language].regenerateMeals}
             </button>
           </div>
         </>
       ) : (
-        <p className="text-center text-gray-700">Generating your meal plan...</p>
+        <p className="text-center text-gray-700">{translations[language].generatingMealPlan}</p>
       )}
     </div>
   );
 };
 
 // Reusable component for displaying a meal section
-const MealSection = ({ title, meals, formatDishName, icon }) => (
+const MealSection = ({ title, meals, formatDishName, icon, formatIngredients }) => (
   <div className="mb-8 bg-white rounded-lg shadow-md p-4 border border-gray-200">
     <div className="flex items-center mb-4">
       {icon}
@@ -1834,7 +2078,7 @@ const MealSection = ({ title, meals, formatDishName, icon }) => (
       {meals.map((meal, index) => (
         <li key={index} className="flex flex-col md:flex-row items-center p-2 rounded hover:bg-gray-100 transition duration-200">
           <span className="font-semibold text-lg text-green-600">{formatDishName(meal.name)}</span>: 
-          <span className="ml-0 md:ml-2 text-gray-700">{meal.ingredients.join(', ')}</span>
+          <span className="ml-0 md:ml-2 text-gray-700">{formatIngredients(meal.ingredients)}</span>
           <span className="ml-0 md:ml-2 text-gray-500">({Math.round(meal.quantity)}g) - {Math.round(meal.totalEnergy)} kcal</span>
         </li>
       ))}
